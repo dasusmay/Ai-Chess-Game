@@ -28,7 +28,7 @@ DIFFICULTY_SETTINGS = {
     'Medium': {'depth': 6, 'randomness': 0.02, 'think_time': 2.0, 'aggression': 2.8, 'tactical_bonus': 2.0},
     'Hard': {'depth': 7, 'randomness': 0.0, 'think_time': 3.5, 'aggression': 3.5, 'tactical_bonus': 2.5},
     'Expert': {'depth': 8, 'randomness': 0.0, 'think_time': 5.0, 'aggression': 4.2, 'tactical_bonus': 3.0},
-    'God': {'depth': 9, 'randomness': 0.0, 'think_time': 8.0, 'aggression': 5.0, 'tactical_bonus': 4.0}
+    'Goat': {'depth': 9, 'randomness': 0.0, 'think_time': 8.0, 'aggression': 5.0, 'tactical_bonus': 4.0}
 }
 
 # Global transposition table with deeper storage
@@ -140,11 +140,11 @@ def draw_sidebar(screen, difficulty, game_status, captured_pieces, eval_score, t
     y_pos = 10
     
     # Title
-    title = title_font.render("🔥 DESTROYER AI 🔥", True, DARK_RED)
+    title = title_font.render("Chess AI", True, DARK_RED)
     screen.blit(title, (BOARD_SIZE + 5, y_pos))
     y_pos += 35
     
-    diff_colors = {'Easy': GREEN, 'Medium': ORANGE, 'Hard': RED, 'Expert': PURPLE, 'God': DARK_RED}
+    diff_colors = {'Easy': GREEN, 'Medium': ORANGE, 'Hard': RED, 'Expert': PURPLE, 'Goat': DARK_RED}
     diff_color = diff_colors.get(difficulty, BLACK)
     diff_text = font.render(f"Level: {difficulty}", True, diff_color)
     screen.blit(diff_text, (BOARD_SIZE + 5, y_pos))
@@ -214,7 +214,7 @@ def draw_sidebar(screen, difficulty, game_status, captured_pieces, eval_score, t
         f"2 - Medium {'✓' if difficulty == 'Medium' else ''}", 
         f"3 - Hard {'✓' if difficulty == 'Hard' else ''}",
         f"4 - Expert {'✓' if difficulty == 'Expert' else ''}",
-        f"5 - God {'✓' if difficulty == 'God' else ''}",
+        f"5 - Goat {'✓' if difficulty == 'Goat' else ''}",
         "U - Undo move",
         "Q - Quit"
     ]
@@ -1330,7 +1330,7 @@ def handle_difficulty_change(key):
         pygame.K_2: 'Medium', 
         pygame.K_3: 'Hard',
         pygame.K_4: 'Expert',
-        pygame.K_5: 'God'
+        pygame.K_5: 'Goat'
     }
     return difficulty_map.get(key)
 
@@ -1373,7 +1373,7 @@ def ai_think_thread(board, difficulty):
 def main():
     pygame.init()
     screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("🔥💀 ULTIMATE DESTROYER CHESS AI - UNBEATABLE GOD MODE! 💀🔥")
+    pygame.display.set_caption("CHESS AI")
     
     try:
         images = load_images()
@@ -1391,13 +1391,13 @@ def main():
     running = True
     selected_square = None
     possible_moves = []
-    difficulty = 'God'  # Start with GOD MODE by default!
+    difficulty = 'Goat'  # Start with GOAT MODE by default!
     game_status = "Your turn (White)"
     captured_pieces = {'white': [], 'black': []}
     last_move = None
     current_eval = 0.0
     ai_thinking_time = 0.0
-    ai_strategy = "💀 GOD MODE ACTIVATED! 💀\n🔥 PREPARE FOR ANNIHILATION! 🔥"
+    ai_strategy = "💀 GOAT MODE ACTIVATED! 💀\n🔥 PREPARE FOR ANNIHILATION! 🔥"
     threatened_squares = []
     danger_levels = {}
     ai_thread = None
@@ -1409,7 +1409,7 @@ def main():
     print("💀 Enhanced with ALL advanced chess engine techniques!")
     print("🎯 Features: 9-depth search, quiescence, iterative deepening, killer moves!")
     print("🔥 WARNING: Even 'Easy' mode will CRUSH most players!")
-    print("💀 GOD MODE: Prepare to witness chess perfection!")
+    print("💀 GOAT MODE: Prepare to witness chess perfection!")
     print("📋 Controls: Mouse=Move, R=Restart, U=Undo, 1-5=Difficulty, Q=Quit")
 
     while running:
@@ -1435,14 +1435,14 @@ def main():
                         print(f"🔥💀 Difficulty changed to {difficulty} 💀🔥")
                         print(f"⚔️ Aggression: {aggression}x | Tactical: {tactical}x | Depth: {ai_depth}")
                         
-                        if difficulty == 'God':
-                            print("💀👹💀 GOD MODE: ULTIMATE DESTRUCTION PROTOCOL! 💀👹💀")
-                            ai_strategy = "💀 GOD MODE ACTIVATED! 💀\n🔥 YOUR DOOM IS INEVITABLE! 🔥"
+                        if difficulty == 'Goat':
+                            print("💀👹💀 GOAT MODE: ULTIMATE DESTRUCTION PROTOCOL! 💀👹💀")
+                            ai_strategy = "💀 GOAT MODE ACTIVATED! 💀\n YOUR DOOM IS INEVITABLE! "
                         elif difficulty == 'Expert':
-                            print("⚔️🔥⚔️ EXPERT MODE: MAXIMUM DEVASTATION! ⚔️🔥⚔️")
+                            print("⚔️⚔️ EXPERT MODE: MAXIMUM DEVASTATION! ⚔️⚔️")
                             ai_strategy = "⚔️ EXPERT DESTROYER! ⚔️\n💀 ANNIHILATION IMMINENT! 💀"
                         elif difficulty == 'Hard':
-                            print("🔥💀🔥 HARD MODE: BRUTAL DOMINATION! 🔥💀🔥")
+                            print("💀 HARD MODE: BRUTAL DOMINATION! 💀")
                             ai_strategy = "🔥 HARD DESTROYER! 🔥\n⚔️ CRUSHING EVERYTHING! ⚔️"
                         elif difficulty == 'Medium':
                             print("⚔️👹⚔️ MEDIUM MODE: AGGRESSIVE ASSAULT! ⚔️👹⚔️")
@@ -1470,8 +1470,8 @@ def main():
                             ai_thread.join(timeout=1.0)
                         
                         # Reset strategy based on difficulty
-                        if difficulty == 'God':
-                            ai_strategy = "💀 GOD MODE RESET! 💀\n🔥 READY FOR MASSACRE! 🔥"
+                        if difficulty == 'GOAT':
+                            ai_strategy = "💀 GOAT MODE RESET! 💀\n🔥 READY FOR MASSACRE! 🔥"
                         else:
                             ai_strategy = f"🔥 {difficulty.upper()} DESTROYER READY! 🔥\n💀 FRESH BLOOD AWAITS! 💀"
                         
@@ -1573,7 +1573,7 @@ def main():
                         game_status = "💀💀 CHECKMATE! 💀💀\n🔥 DESTROYER AI OBLITERATES YOU! 🔥\n👹 TOTAL ANNIHILATION ACHIEVED! 👹\n💀 YOU HAVE BEEN DESTROYED! 💀"
                         ai_strategy = "🏆💀 VICTORY! DOMINATION! 💀🏆\n🔥 ANOTHER VICTIM FALLS! 🔥"
                     else:
-                        game_status = "💥 IMPOSSIBLE CHECKMATE! 💥\n🤯 HUMAN DEFEATS GOD AI! 🤯\n🎉 LEGENDARY ACHIEVEMENT! 🎉\n👑 YOU ARE A CHESS GOD! 👑"
+                        game_status = "💥 IMPOSSIBLE CHECKMATE! 💥\n🤯 HUMAN DEFEATS GOAT AI! 🤯\n🎉 LEGENDARY ACHIEVEMENT! 🎉\n👑 YOU ARE A CHESS GOAT! 👑"
                         ai_strategy = "😵💀 SYSTEM ERROR... 💀😵\n🤖 HOW DID YOU WIN?! 🤖"
                 elif board.is_stalemate():
                     game_status = "⚖️ STALEMATE! ⚖️\nYou barely survived\nthe DESTROYER'S wrath!\n😤 AI is UNSATISFIED! 😤"
@@ -1595,18 +1595,18 @@ def main():
                 if board.turn == chess.WHITE:
                     if ai_move_result['thinking']:
                         thinking_msgs = [
-                            "💀 DESTROYER AI calculating your DOOM... 💀\n🧠 Deep analysis in progress... 🧠\n🔥 PLOTTING MAXIMUM DESTRUCTION! 🔥",
+                            "💀 DESTROYER AI calculating your DOOM... 💀\n🧠 Deep analysis in progress... 🧠\n PLOTTING MAXIMUM DESTRUCTION! 🔥",
                             "🎯 AI scanning for WEAKNESSES... 🎯\n⚔️ Tactical combinations loading... ⚔️\n💀 YOUR DEFEAT IS INEVITABLE! 💀",
-                            "👹 EVIL GENIUS at work... 👹\n🔥 Calculating DEVASTATING moves... 🔥\n💀 ANNIHILATION PROTOCOL ACTIVE! 💀"
+                            "👹 EVIL GENIUS at work... 👹\n Calculating DEVASTATING moves... \n💀 ANNIHILATION PROTOCOL ACTIVE! 💀"
                         ]
                         game_status = random.choice(thinking_msgs)
-                        ai_strategy = f"🧠💀 DEPTH {ai_depth} ANALYSIS! 💀🧠\n🔥 DESTRUCTION ALGORITHMS! 🔥"
+                        ai_strategy = f"🧠 DEPTH {ai_depth} ANALYSIS! 🧠\n DESTRUCTION ALGORITHMS! "
                     else:
                         threat_level = len(threatened_squares)
                         if threat_level >= 5:
-                            game_status = "⚠️💀 EXTREME DANGER! 💀⚠️\nYour turn (White)\n🔥 MULTIPLE PIECES THREATENED! 🔥\n😱 DEATH SURROUNDS YOU! 😱"
+                            game_status = "⚠️💀 EXTREME DANGER! 💀⚠️\nYour turn (White)\n MULTIPLE PIECES THREATENED! \n DEATH SURROUNDS YOU! "
                         elif threat_level >= 3:
-                            game_status = "⚠️🔥 HIGH DANGER! 🔥⚠️\nYour turn (White)\n⚔️ AI has you surrounded! ⚔️\n💀 Choose carefully! 💀"
+                            game_status = "⚠️ HIGH DANGER! ⚠️\nYour turn (White)\n⚔️ AI has you surrounded! ⚔️\n💀 Choose carefully! 💀"
                         elif threat_level >= 1:
                             game_status = "⚠️⚡ DANGER! ⚡⚠️\nYour turn (White)\n👹 AI is stalking you! 👹\n🎯 Stay alert! 🎯"
                         else:
@@ -1617,22 +1617,22 @@ def main():
                             settings = DIFFICULTY_SETTINGS[difficulty]
                             eval_score = evaluate_board(board, settings['aggression'], settings['tactical_bonus'])
                             if eval_score > 500:
-                                ai_strategy = "😈💀 YOU'RE FINISHED! 💀😈\n🔥 TOTAL DOMINATION! 🔥"
+                                ai_strategy = "YOU'RE FINISHED! \nTOTAL DOMINATION!"
                             elif eval_score > 200:
-                                ai_strategy = "👹⚔️ CRUSHING YOU! ⚔️👹\n💀 VICTORY IS MINE! 💀"
+                                ai_strategy = "⚔️ CRUSHING YOU! ⚔️👹\n VICTORY IS MINE! "
                             elif eval_score > 100:
-                                ai_strategy = "🔥💪 GAINING CONTROL! 💪🔥\n⚔️ PRESSURE BUILDING! ⚔️"
+                                ai_strategy = "GAINING CONTROL!\n PRESSURE BUILDING! "
                             elif eval_score > -100:
-                                ai_strategy = "🎯👹 BALANCED BATTLE! 👹🎯\n🔥 SEEKING WEAKNESS! 🔥"
+                                ai_strategy = "🎯 BALANCED BATTLE! 🎯\nSEEKING WEAKNESS! "
                             elif eval_score > -200:
-                                ai_strategy = "😤💪 FIGHTING BACK! 💪😤\n⚔️ NEVER SURRENDER! ⚔️"
+                                ai_strategy = "😤 FIGHTING BACK! 😤\n⚔️ NEVER SURRENDER! ⚔️"
                             else:
-                                ai_strategy = "🔥💀 BERSERK MODE! 💀🔥\n👹 CHAOS UNLEASHED! 👹"
+                                ai_strategy = "🔥 BERSERK MODE! 🔥\n👹 CHAOS UNLEASHED! 👹"
                         except:
                             ai_strategy = "🧠🔍 ANALYZING POSITION... 🔍🧠\n💀 PLOTTING DESTRUCTION! 💀"
                 else:
                     game_status = f"🔥💀 DESTROYER AI THINKING... 💀🔥\n🧠 Depth {ai_depth} calculation! 🧠\n⚔️ MAXIMUM AGGRESSION MODE! ⚔️\n👹 YOUR DOOM APPROACHES! 👹"
-                    ai_strategy = f"💀🧠 GOD-LEVEL ANALYSIS! 🧠💀\n🔥 ULTIMATE DESTRUCTION! 🔥"
+                    ai_strategy = f"💀🧠 GOAT-LEVEL ANALYSIS! 🧠💀\n🔥 ULTIMATE DESTRUCTION! 🔥"
             
             draw_sidebar(screen, difficulty, game_status, captured_pieces, 
                         current_eval, ai_thinking_time, move_count, ai_strategy, ai_depth)
@@ -1646,7 +1646,7 @@ def main():
                     aggression = settings['aggression']
                     tactical = settings['tactical_bonus']
                     
-                    print(f"🔥💀⚔️ DESTROYER AI ACTIVATED! Level: {difficulty} ⚔️💀🔥")
+                    print(f"💀 DESTROYER AI ACTIVATED! Level: {difficulty} 💀")
                     print(f"👹 Aggression: {aggression}x | Tactical: {tactical}x | Depth: {ai_depth}")
                     print("💀 CALCULATING YOUR ANNIHILATION... 💀")
                     
@@ -1662,7 +1662,7 @@ def main():
                     ai_thinking_time = time.time() - ai_thinking_start
                     
                     if ai_move and ai_move in board.legal_moves:
-                        move_desc = f"💀⚔️ DESTROYER STRIKES: {ai_move.uci()}"
+                        move_desc = f" DESTROYER STRIKES: {ai_move.uci()}"
                         
                         # Enhanced move description
                         if board.is_capture(ai_move):
@@ -1672,8 +1672,8 @@ def main():
                                     'p': 'PAWN', 'r': 'ROOK', 'n': 'KNIGHT', 
                                     'b': 'BISHOP', 'q': 'QUEEN', 'k': 'KING'
                                 }.get(captured_piece.symbol().lower(), 'PIECE')
-                                move_desc += f" (💀 DESTROYED {piece_name}! 💀)"
-                            print(f"🔥💀💥 {move_desc} | Strategy: {strategy} 💥💀🔥")
+                                move_desc += f" ( DESTROYED {piece_name}! )"
+                            print(f" {move_desc} | Strategy: {strategy} ")
                         else:
                             # Check if it's a special move
                             if board.is_castling(ai_move):
@@ -1681,7 +1681,7 @@ def main():
                             elif ai_move.promotion:
                                 move_desc += f" (👑 PROMOTION TO {'QUEEN' if ai_move.promotion == chess.QUEEN else 'PIECE'}!)"
                             
-                            print(f"⚔️👹 {move_desc} | Strategy: {strategy} 👹⚔️")
+                            print(f" {move_desc} | Strategy: {strategy} ")
                         
                         # Execute the move
                         board.push(ai_move)
