@@ -1432,28 +1432,28 @@ def main():
                         aggression = DIFFICULTY_SETTINGS[difficulty]['aggression']
                         tactical = DIFFICULTY_SETTINGS[difficulty]['tactical_bonus']
                         
-                        print(f"🔥💀 Difficulty changed to {difficulty} 💀🔥")
-                        print(f"⚔️ Aggression: {aggression}x | Tactical: {tactical}x | Depth: {ai_depth}")
+                        print(f" Difficulty changed to {difficulty} ")
+                        print(f" Aggression: {aggression}x | Tactical: {tactical}x | Depth: {ai_depth}")
                         
                         if difficulty == 'Goat':
-                            print("💀👹💀 GOAT MODE: ULTIMATE DESTRUCTION PROTOCOL! 💀👹💀")
-                            ai_strategy = "💀 GOAT MODE ACTIVATED! 💀\n YOUR DOOM IS INEVITABLE! "
+                            print("GOAT MODE: ULTIMATE DESTRUCTION PROTOCOL!")
+                            ai_strategy = " GOAT MODE ACTIVATED! \n YOUR DOOM IS INEVITABLE! "
                         elif difficulty == 'Expert':
                             print("⚔️⚔️ EXPERT MODE: MAXIMUM DEVASTATION! ⚔️⚔️")
-                            ai_strategy = "⚔️ EXPERT DESTROYER! ⚔️\n💀 ANNIHILATION IMMINENT! 💀"
+                            ai_strategy = " EXPERT DESTROYER! \n ANNIHILATION IMMINENT! "
                         elif difficulty == 'Hard':
-                            print("💀 HARD MODE: BRUTAL DOMINATION! 💀")
-                            ai_strategy = "🔥 HARD DESTROYER! 🔥\n⚔️ CRUSHING EVERYTHING! ⚔️"
+                            print("HARD MODE: BRUTAL DOMINATION!")
+                            ai_strategy = " HARD DESTROYER! \n⚔️ CRUSHING EVERYTHING! ⚔️"
                         elif difficulty == 'Medium':
-                            print("⚔️👹⚔️ MEDIUM MODE: AGGRESSIVE ASSAULT! ⚔️👹⚔️")
-                            ai_strategy = "👹 MEDIUM AGGRESSION! 👹\n🎯 HUNTING FOR KILLS! 🎯"
+                            print(" MEDIUM MODE: AGGRESSIVE ASSAULT!")
+                            ai_strategy = " MEDIUM AGGRESSION! \n HUNTING FOR KILLS! "
                         else:
-                            print("🔥⚡🔥 EASY MODE: Still DEVASTATINGLY aggressive! 🔥⚡🔥")
-                            ai_strategy = "⚡ EASY DESTROYER! ⚡\n🔥 NO MERCY EVEN HERE! 🔥"
+                            print("EASY MODE: Still DEVASTATINGLY aggressive!")
+                            ai_strategy = " EASY DESTROYER! \n NO MERCY EVEN HERE! "
                         continue
                     
                     if event.key == pygame.K_r:
-                        print("🔄💀 Restarting... DESTROYER AI hungry for new victim! 💀🔄")
+                        print("Restarting... DESTROYER AI hungry for new victim!")
                         board.reset()
                         move_history = [board.copy()]
                         selected_square = None
@@ -1471,9 +1471,9 @@ def main():
                         
                         # Reset strategy based on difficulty
                         if difficulty == 'GOAT':
-                            ai_strategy = "💀 GOAT MODE RESET! 💀\n🔥 READY FOR MASSACRE! 🔥"
+                            ai_strategy = "GOAT MODE RESET!\n READY FOR MASSACRE! "
                         else:
-                            ai_strategy = f"🔥 {difficulty.upper()} DESTROYER READY! 🔥\n💀 FRESH BLOOD AWAITS! 💀"
+                            ai_strategy = f" {difficulty.upper()} DESTROYER READY! \n FRESH BLOOD AWAITS! "
                         
                     elif event.key == pygame.K_q:
                         running = False
@@ -1489,7 +1489,7 @@ def main():
                                 last_move = None
                                 threatened_squares = []
                                 danger_levels = {}
-                                print("↩️💀 Moves undone - DESTROYER AI still thirsts for blood! 💀↩️")
+                                print("Moves undone - DESTROYER AI still thirsts for blood!")
                             elif len(move_history) >= 2:
                                 move_history = move_history[:-1]
                                 board = move_history[-1].copy()
@@ -1498,7 +1498,7 @@ def main():
                                 last_move = None
                                 threatened_squares = []
                                 danger_levels = {}
-                                print("↩️⚔️ Move undone - No escape from destruction! ⚔️↩️")
+                                print("Move undone - No escape from destruction!")
 
                 elif board.turn == chess.WHITE and event.type == pygame.MOUSEBUTTONDOWN and not board.is_game_over() and not ai_move_result['thinking']:
                     x, y = pygame.mouse.get_pos()
@@ -1514,7 +1514,7 @@ def main():
                                 if piece and piece.color == chess.WHITE:
                                     selected_square = square
                                     possible_moves = get_possible_moves(board, square)
-                                    print(f"🎯 Selected: {chess.square_name(square)} ({piece.symbol()}) - Choose your move wisely!")
+                                    print(f"Selected: {chess.square_name(square)} ({piece.symbol()}) - Choose your move wisely!")
                             else:
                                 move = chess.Move(selected_square, square)
                                 
@@ -1528,9 +1528,9 @@ def main():
                                     if board.is_capture(move):
                                         captured_piece = board.piece_at(square)
                                         move_desc += f" (captured {captured_piece.symbol()})"
-                                        print(f"💥⚔️ {move_desc} - DESTROYER AI will make you PAY DEARLY! ⚔️💥")
+                                        print(f"{move_desc} - DESTROYER AI will make you PAY DEARLY!")
                                     else:
-                                        print(f"♟️👹 {move_desc} - AI plotting your DESTRUCTION... 👹♟️")
+                                        print(f"{move_desc} - AI plotting your DESTRUCTION... ")
                                     
                                     board.push(move)
                                     move_history.append(board.copy())
@@ -1543,7 +1543,7 @@ def main():
                                         current_eval = 0.0
                                     
                                 else:
-                                    print(f"❌💀 Illegal move: {move.uci()} - Even your moves can't escape the rules! 💀❌")
+                                    print(f"❌ Illegal move: {move.uci()} - Even your moves can't escape the rules! ❌")
                                 
                                 selected_square = None
                                 possible_moves = []
@@ -1570,14 +1570,14 @@ def main():
                 if board.is_checkmate():
                     winner = "Black" if board.turn == chess.WHITE else "White"
                     if winner == "Black":
-                        game_status = "💀💀 CHECKMATE! 💀💀\n🔥 DESTROYER AI OBLITERATES YOU! 🔥\n👹 TOTAL ANNIHILATION ACHIEVED! 👹\n💀 YOU HAVE BEEN DESTROYED! 💀"
-                        ai_strategy = "🏆💀 VICTORY! DOMINATION! 💀🏆\n🔥 ANOTHER VICTIM FALLS! 🔥"
+                        game_status = " CHECKMATE!\n DESTROYER AI OBLITERATES YOU! \n TOTAL ANNIHILATION ACHIEVED! \nYOU HAVE BEEN DESTROYED! "
+                        ai_strategy = "VICTORY! DOMINATION! \n ANOTHER VICTIM FALLS! "
                     else:
-                        game_status = "💥 IMPOSSIBLE CHECKMATE! 💥\n🤯 HUMAN DEFEATS GOAT AI! 🤯\n🎉 LEGENDARY ACHIEVEMENT! 🎉\n👑 YOU ARE A CHESS GOAT! 👑"
-                        ai_strategy = "😵💀 SYSTEM ERROR... 💀😵\n🤖 HOW DID YOU WIN?! 🤖"
+                        game_status = "💥 IMPOSSIBLE CHECKMATE! 💥\n HUMAN DEFEATS GOAT AI! \n🎉 LEGENDARY ACHIEVEMENT! 🎉\n👑 YOU ARE A CHESS GOAT! 👑"
+                        ai_strategy = " SYSTEM ERROR... 💀😵\n🤖 HOW DID YOU WIN?! 🤖"
                 elif board.is_stalemate():
-                    game_status = "⚖️ STALEMATE! ⚖️\nYou barely survived\nthe DESTROYER'S wrath!\n😤 AI is UNSATISFIED! 😤"
-                    ai_strategy = "😡💀 STALEMATE RAGE! 💀😡\n🔥 VICTORY WAS SO CLOSE! 🔥"
+                    game_status = " STALEMATE! ⚖️\nYou barely survived\nthe DESTROYER'S wrath!\n😤 AI is UNSATISFIED! 😤"
+                    ai_strategy = " STALEMATE RAGE! \n VICTORY WAS SO CLOSE! "
                 else:
                     game_status = "🤝 DRAW ACHIEVED! 🤝\nYou escaped total\nannihilation... this time!\n😅 Consider yourself lucky! 😅"
                     ai_strategy = "😤⚔️ DRAW ACCEPTED! ⚔️😤\n💀 NEXT TIME: DESTRUCTION! 💀"
