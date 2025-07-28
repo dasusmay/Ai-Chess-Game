@@ -1619,15 +1619,15 @@ def main():
                             if eval_score > 500:
                                 ai_strategy = "YOU'RE FINISHED! \nTOTAL DOMINATION!"
                             elif eval_score > 200:
-                                ai_strategy = "⚔️ CRUSHING YOU! ⚔️👹\n VICTORY IS MINE! "
+                                ai_strategy = "⚔️ CRUSHING YOU! ⚔️\n VICTORY IS MINE! "
                             elif eval_score > 100:
                                 ai_strategy = "GAINING CONTROL!\n PRESSURE BUILDING! "
                             elif eval_score > -100:
-                                ai_strategy = "🎯 BALANCED BATTLE! 🎯\nSEEKING WEAKNESS! "
+                                ai_strategy = "BALANCED BATTLE! \nSEEKING WEAKNESS! "
                             elif eval_score > -200:
-                                ai_strategy = "😤 FIGHTING BACK! 😤\n⚔️ NEVER SURRENDER! ⚔️"
+                                ai_strategy = "FIGHTING BACK! \n⚔️ NEVER SURRENDER! ⚔️"
                             else:
-                                ai_strategy = "🔥 BERSERK MODE! 🔥\n👹 CHAOS UNLEASHED! 👹"
+                                ai_strategy = "BERSERK MODE! \n CHAOS UNLEASHED! "
                         except:
                             ai_strategy = "🧠🔍 ANALYZING POSITION... 🔍🧠\n💀 PLOTTING DESTRUCTION! 💀"
                 else:
@@ -1646,9 +1646,9 @@ def main():
                     aggression = settings['aggression']
                     tactical = settings['tactical_bonus']
                     
-                    print(f"💀 DESTROYER AI ACTIVATED! Level: {difficulty} 💀")
-                    print(f"👹 Aggression: {aggression}x | Tactical: {tactical}x | Depth: {ai_depth}")
-                    print("💀 CALCULATING YOUR ANNIHILATION... 💀")
+                    print(f"CHESS AI ACTIVATED! Level: {difficulty} ")
+                    print(f"Aggression: {aggression}x | Tactical: {tactical}x | Depth: {ai_depth}")
+                    print("CALCULATING YOUR ANNIHILATION...")
                     
                     ai_thread = threading.Thread(target=ai_think_thread, args=(board, difficulty))
                     ai_thread.daemon = True
@@ -1677,7 +1677,7 @@ def main():
                         else:
                             # Check if it's a special move
                             if board.is_castling(ai_move):
-                                move_desc += " (🏰 FORTRESS MODE)"
+                                move_desc += " (FORTRESS MODE)"
                             elif ai_move.promotion:
                                 move_desc += f" (👑 PROMOTION TO {'QUEEN' if ai_move.promotion == chess.QUEEN else 'PIECE'}!)"
                             
@@ -1698,17 +1698,17 @@ def main():
                         
                         # Enhanced post-move analysis
                         if board.is_check():
-                            print("💀⚡ CHECK DELIVERED! Your king trembles in fear! ⚡💀")
+                            print("CHECK DELIVERED! Your king trembles in fear!")
                         
                         if board.is_checkmate():
-                            print("🏆💀🔥 CHECKMATE! TOTAL DOMINATION ACHIEVED! 🔥💀🏆")
+                            print("CHECKMATE! TOTAL DOMINATION ACHIEVED!")
                         
                         # Count threats created
                         new_threats, _ = get_threatened_squares(board)
                         if len(new_threats) >= 3:
-                            print(f"👹🔥 AI now threatens {len(new_threats)} of your pieces! TERROR UNLEASHED! 🔥👹")
+                            print(f" AI now threatens {len(new_threats)} of your pieces! TERROR UNLEASHED!")
                         elif len(new_threats) >= 1:
-                            print(f"⚔️💀 {len(new_threats)} piece(s) under attack! Danger everywhere! 💀⚔️")
+                            print(f" {len(new_threats)} piece(s) under attack! Danger everywhere!")
                         
                         # Add dramatic thinking delay
                         min_think_time = DIFFICULTY_SETTINGS[difficulty]['think_time']
@@ -1718,7 +1718,7 @@ def main():
                             ai_thinking_time += sleep_time
                     
                     else:
-                        print("🚨💀 AI SYSTEM ERROR - BACKUP DESTRUCTION PROTOCOL ACTIVATED! 💀🚨")
+                        print("AI SYSTEM ERROR - BACKUP DESTRUCTION PROTOCOL ACTIVATED!")
                         legal_moves = list(board.legal_moves)
                         if legal_moves:
                             # Emergency AI still tries to be aggressive
@@ -1747,16 +1747,16 @@ def main():
                             ai_move = emergency_moves[0][0]
                             
                             if emergency_moves[0][1] == 3:
-                                ai_strategy = "💀🚨 EMERGENCY KILL! 🚨💀"
+                                ai_strategy = " EMERGENCY KILL! "
                             elif emergency_moves[0][1] == 2:
-                                ai_strategy = "⚔️🚨 EMERGENCY CHECK! 🚨⚔️"
+                                ai_strategy = " EMERGENCY CHECK! "
                             else:
-                                ai_strategy = "🔥🚨 EMERGENCY MOVE! 🚨🔥"
+                                ai_strategy = " EMERGENCY MOVE! "
                             
                             board.push(ai_move)
                             move_history.append(board.copy())
                             last_move = ai_move
-                            print(f"🚨⚔️ EMERGENCY: {ai_move.uci()} | {ai_strategy} ⚔️🚨")
+                            print(f" EMERGENCY: {ai_move.uci()} | {ai_strategy} ")
                     
                     # Reset AI state
                     ai_move_result = {'move': None, 'strategy': None, 'thinking': False}
@@ -1784,18 +1784,18 @@ def main():
         ai_thread.join(timeout=2.0)
     
     pygame.quit()
-    print("👋💀 Thanks for playing ULTIMATE DESTROYER CHESS AI! 💀👋")
-    print("🔥💀 Hope you enjoyed the ABSOLUTE DOMINATION experience! 💀🔥")
-    print("⚔️👹 The DESTROYER AI showed its true power! 👹⚔️")
-    print("💀🏆 Remember: Even losing to this AI is an honor! 🏆💀")
+    print(" Thanks for playing CHESS AI!")
+    print("Hope you enjoyed the ABSOLUTE DOMINATION experience!")
+    print("The Chess AI showed its true power!")
+    print("Remember: Even losing to this AI is an honor!")
 
 if __name__ == "__main__":
     try:
         main()
     except Exception as e:
-        print(f"💥🚨 Error starting DESTROYER AI: {e} 🚨💥")
-        print("📦 Make sure you have required libraries:")
+        print(f"Error starting DESTROYER AI: {e} ")
+        print("Make sure you have required libraries:")
         print("   pip install pygame python-chess")
-        print("🔥💀👹 ULTIMATE DESTROYER AI awaits your challenge! 👹💀🔥")
+        print("Chess AI awaits your challenge! ")
 
 
