@@ -1,4 +1,4 @@
-# ♟️ ULTIMATE DESTROYER CHESS AI - UNBEATABLE GOD MODE! 💀🔥
+# ♟️CHESS AI 💀🔥
 
 A feature-rich, high-performance chess game built with Python and Pygame. Take on the **ULTIMATE DESTROYER AI**—an AI opponent with multiple difficulty levels, including the insane **God Mode**! Whether you're a beginner or a grandmaster, prepare to be challenged.
 
