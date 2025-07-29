@@ -23,7 +23,7 @@ A feature-rich, high-performance chess game built with Python and Pygame. Take o
 
 - **Level 1–2**: Random moves  
 - **Level 3–4**: Semi-optimized using evaluation  
-- **Level 5 (God Mode)**: Brutal move selection with deep depth (depth 9+)  
+- **Level 5 (Goat Mode)**: Brutal move selection with deep depth (depth 9+)  
 - AI uses `random`, `math`, and `time` for decision-making and smooth gameplay  
 - Built on `python-chess` for legal move generation and board evaluation
 
